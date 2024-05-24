@@ -31,10 +31,31 @@ Book.prototype.createHTMLBookCard = function() {
     bookAuthor.textContent = this.author;
     bookInfo.appendChild(bookAuthor);
 
+    let pagesSection = document.createElement("div");
+    pagesSection.setAttribute("class", "pages-section");
+
+    let bookPagesRead = document.createElement("p");
+    bookPagesRead.setAttribute("class", "pages-read");
+    bookPagesRead.textContent = this.pagesRead;
+    pagesSection.appendChild(bookPagesRead);
+
     let bookPages = document.createElement("p");
     bookPages.setAttribute("class", "pages");
     bookPages.textContent = this.pages;
-    bookInfo.appendChild(bookPages);
+    pagesSection.appendChild(bookPages);
+
+    bookInfo.appendChild(pagesSection);
+
+    let subPageButton = document.createElement("button");
+    subPageButton.setAttribute("class", "page-button subtract");
+    subPageButton.textContent = "-";
+
+    let addPageButton = document.createElement("button");
+    addPageButton.setAttribute("class", "page-button add");
+    addPageButton.textContent = "+";
+
+    bookInfo.appendChild(subPageButton);
+    bookInfo.appendChild(addPageButton);
 
     bookCard.appendChild(bookInfo);
 
