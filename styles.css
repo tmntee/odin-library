@@ -39,6 +39,8 @@ div.book-card {
 
 img.book-cover {
     grid-row: 1 / 4;
+    width: 100%;
+    height: 100%;
 }
 
 div.book-info {
@@ -48,4 +50,11 @@ div.book-info {
 
 div.pages-section {
     display: flex;
+}
+
+div.book-nav {
+    grid-column: 3 / 4;
+
+    display: flex;
+    justify-content: end;
 }
