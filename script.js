@@ -39,6 +39,10 @@ Book.prototype.createHTMLBookCard = function() {
     bookPagesRead.textContent = this.pagesRead;
     pagesSection.appendChild(bookPagesRead);
 
+    let division = document.createElement("p");
+    division.textContent = " / ";
+    pagesSection.appendChild(division);
+
     let bookPages = document.createElement("p");
     bookPages.setAttribute("class", "pages");
     bookPages.textContent = this.pages;
@@ -50,9 +54,25 @@ Book.prototype.createHTMLBookCard = function() {
     subPageButton.setAttribute("class", "page-button subtract");
     subPageButton.textContent = "-";
 
+    subPageButton.addEventListener('click', () => {
+        if (this.pagesRead != 0)
+        {
+            this.pagesRead--;
+            bookPagesRead.textContent = this.pagesRead;
+        }
+    })
+
     let addPageButton = document.createElement("button");
     addPageButton.setAttribute("class", "page-button add");
     addPageButton.textContent = "+";
+
+    addPageButton.addEventListener('click', () => {
+        if (this.pagesRead != this.pages)
+            {
+                this.pagesRead++;
+                bookPagesRead.textContent = this.pagesRead;
+            }
+    })
 
     bookInfo.appendChild(subPageButton);
     bookInfo.appendChild(addPageButton);
