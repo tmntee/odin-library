@@ -183,12 +183,12 @@ let scottPilgrim = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O
 addBookToLibrary(scottPilgrim);
 
 let scottPilgrim2 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
-addBookToLibrary(scottPilgrim);
+addBookToLibrary(scottPilgrim2);
 let scottPilgrim3 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
-addBookToLibrary(scottPilgrim);
+addBookToLibrary(scottPilgrim3);
 let scottPilgrim4 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
-addBookToLibrary(scottPilgrim);
+addBookToLibrary(scottPilgrim4);
 let scottPilgrim5 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
-addBookToLibrary(scottPilgrim);
+addBookToLibrary(scottPilgrim5);
 
 displayLibraryToBookGallery();

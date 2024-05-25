@@ -122,7 +122,7 @@ div.pages-display {
     gap: 5px;
 }
 
-button.page-button {
+button {
     background-color: var(--book-card-color);
     width: 4em;
     height: 2em;
@@ -135,11 +135,11 @@ button.page-button {
     border-radius: 5px;
 }
 
-button.page-button:active {
+button:active {
     border-style: inset;
 }
 
-button.page-button:hover {
+button:hover {
     background-color: #f7f1de;
 }
 
@@ -151,14 +151,6 @@ div.book-nav {
 }
 
 div.book-nav>button {
-    background-color: var(--book-card-color);
-    width: 4em;
-    height: 2em;
-    margin: 5px;
-
-    box-shadow: -2px 2px 2px #7a6240;
-    border-style: outset;
-    border-width: 2px;
-    border-color: white rgb(255, 255, 255) var(--main-content-color) var(--main-content-color);
+    width: 3em;
     border-radius: 50px;
 }
