@@ -75,24 +75,27 @@ Book.prototype.createHTMLBookCard = function() {
     let pagesSection = document.createElement("div");
     pagesSection.setAttribute("class", "pages-section");
 
-    let pagesDisplay = document.createElement("div");
-    pagesDisplay.setAttribute("class", 'pages-display');
+    let pagesDisplay1 = document.createElement("div");
+    pagesDisplay1.setAttribute("class", 'pages-display');
 
     let bookPagesRead = document.createElement("p");
     bookPagesRead.setAttribute("class", "pages-read");
     bookPagesRead.textContent = this.pagesRead;
-    pagesDisplay.appendChild(bookPagesRead);
+    pagesDisplay1.appendChild(bookPagesRead);
 
     let division = document.createElement("p");
     division.textContent = " / ";
-    pagesDisplay.appendChild(division);
+    pagesDisplay1.appendChild(division);
 
     let bookPages = document.createElement("p");
     bookPages.setAttribute("class", "pages");
     bookPages.textContent = this.pages;
-    pagesDisplay.appendChild(bookPages);
+    pagesDisplay1.appendChild(bookPages);
 
-    pagesSection.appendChild(pagesDisplay);
+    pagesSection.appendChild(pagesDisplay1);
+
+    let pagesDisplay2 = document.createElement("div");
+    pagesDisplay2.setAttribute("class", 'pages-display');
 
     let subPageButton = document.createElement("button");
     subPageButton.setAttribute("class", "page-button subtract");
@@ -118,8 +121,10 @@ Book.prototype.createHTMLBookCard = function() {
             }
     })
 
-    pagesSection.appendChild(subPageButton);
-    pagesSection.appendChild(addPageButton);
+    pagesDisplay2.appendChild(subPageButton);
+    pagesDisplay2.appendChild(addPageButton);
+
+    pagesSection.appendChild(pagesDisplay2);
 
     bookInfo.append(pagesSection);
     bookCard.appendChild(bookInfo);

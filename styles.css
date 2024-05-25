@@ -28,8 +28,9 @@
     padding: 0;
 
     --header-color: #172346;
-    --main-content-color: #916D3A;
+    --main-content-color: #634d2e;
     --book-card-color: #f1e3b7;
+    --book-card-border-color: #e9cf83;
 }
 
 body {
@@ -82,6 +83,7 @@ div.book-card {
     grid-template-columns: repeat(3, 1fr);
 
     border-radius: 15px;
+    border: var(--book-card-border-color) 3px solid;
     background-color: var(--book-card-color);
     padding: 1.5em;
 ;}
@@ -91,6 +93,7 @@ img.book-cover {
     width: 90%;
     height: 90%;
     border-radius: 10px;
+    border: var(--book-card-border-color) 2px solid;
 }
 
 div.book-info {
@@ -98,8 +101,38 @@ div.book-info {
     grid-row: 1 / 3;
 }
 
+div.pages-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 10px;
+}
+
 div.pages-display {
     display: flex;
+    gap: 5px;
+}
+
+button.page-button {
+    background-color: var(--book-card-color);
+    width: 4em;
+    height: 2em;
+    margin: 5px;
+
+    box-shadow: -2px 2px 2px #7a6240;
+    border-style: outset;
+    border-width: 2px;
+    border-color: white rgb(255, 255, 255) var(--main-content-color) var(--main-content-color);
+    border-radius: 5px;
+}
+
+button.page-button:active {
+    border-style: inset;
+}
+
+button.page-button:hover {
+    background-color: #f7f1de;
 }
 
 div.book-nav {
