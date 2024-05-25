@@ -39,6 +39,10 @@ body {
     font-family: 'gandhi_sansregular', Arial, Helvetica, sans-serif;
 }
 
+p {
+    font-size: 1.3em;
+}
+
 div.header {
     display: flex;
     flex-direction: column;
@@ -63,23 +67,30 @@ div.welcomers {
 
 div.book-gallery {
     padding: 3em;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(autofill, 600px);
 }
 
 div.book-card {
-    width: 600px;
+    width: min(60%, 600px);
     height: 300px;
 
     display: grid;
     grid-template-rows: 1fr 1fr 0.25fr;
     grid-template-columns: repeat(3, 1fr);
 
-    background-color: var(--book-card-color)
+    border-radius: 15px;
+    background-color: var(--book-card-color);
+    padding: 1.5em;
 ;}
 
 img.book-cover {
     grid-row: 1 / 4;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
 }
 
 div.book-info {
@@ -87,7 +98,7 @@ div.book-info {
     grid-row: 1 / 3;
 }
 
-div.pages-section {
+div.pages-display {
     display: flex;
 }
 
