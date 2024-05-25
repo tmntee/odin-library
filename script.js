@@ -111,3 +111,37 @@ function displayLibraryToBookGallery() {
 let catInTheHat = new Book("Cat in the Hat", "Dr. Seuss", 61, 0, false, false);
 addBookToLibrary(catInTheHat);
 displayLibraryToBookGallery();
+
+let morningColor = "#9bbed1";
+let afternoonColor = "#639bc9";
+let eveningColor = "#b55c04"; 
+let nightColor = "#141c2e";
+
+let time = new Date();
+let currentHour = time.getHours();
+if (currentHour >= 5 && currentHour < 12)
+{
+    document.getElementById("header-sky").style.backgroundColor = morningColor;
+    document.getElementById("user-greeting").textContent += " morning";
+} 
+else if (currentHour >= 12 && currentHour < 17)
+{
+    document.getElementById("header-sky").style.backgroundColor = afternoonColor;
+    document.getElementById("user-greeting").textContent += " afternoon";
+} 
+else if (currentHour >= 17 && currentHour < 21)
+{
+    document.getElementById("header-sky").style.backgroundColor = eveningColor;
+    document.getElementById("user-greeting").textContent += " evening";
+}
+else if (currentHour >= 21 || currentHour <= 4)
+{
+    document.getElementById("header-sky").style.backgroundColor = nightColor;
+    document.getElementById("user-greeting").textContent += "night";
+}
+    
+let month = time.toLocaleDateString('default', { month: 'long'});
+let day = time.getUTCDate();
+time.toLocaleDateString
+let year = time.getUTCFullYear();
+document.getElementById("date").textContent = `${month} ${day}, ${year}`;

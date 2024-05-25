@@ -2,18 +2,30 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: solid 1px black;
+
+
+    --header-color: #172346;
+    --main-content-color: #916D3A;
+    --book-card-color: #f1e3b7;
 }
 
 body {
     display: grid;
     grid-template-rows: 1fr 6fr;
+    height: 100vh;
 }
 
 div.header {
     display: flex;
     flex-direction: column;
     padding: 1em;
+
+    background-color: var(--header-color);
+    color: white;
+}
+
+div.main-content {
+    background-color: var(--main-content-color);
 }
 
 div.welcomers {
@@ -35,7 +47,9 @@ div.book-card {
     display: grid;
     grid-template-rows: 1fr 1fr 0.25fr;
     grid-template-columns: repeat(3, 1fr);
-}
+
+    background-color: var(--book-card-color)
+;}
 
 img.book-cover {
     grid-row: 1 / 4;
