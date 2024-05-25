@@ -99,7 +99,9 @@ Book.prototype.createHTMLBookCard = function() {
 
     let subPageButton = document.createElement("button");
     subPageButton.setAttribute("class", "page-button subtract");
-    subPageButton.textContent = "-";
+    let subIcon = document.createElement("img");
+    subIcon.setAttribute("src", "images/remove-icon.svg");
+    subPageButton.appendChild(subIcon);
 
     subPageButton.addEventListener('click', () => {
         if (this.pagesRead != 0)
@@ -111,7 +113,9 @@ Book.prototype.createHTMLBookCard = function() {
 
     let addPageButton = document.createElement("button");
     addPageButton.setAttribute("class", "page-button add");
-    addPageButton.textContent = "+";
+    let addIcon = document.createElement("img");
+    addIcon.setAttribute("src", "images/add-icon.svg");
+    addPageButton.appendChild(addIcon);
 
     addPageButton.addEventListener('click', () => {
         if (this.pagesRead != this.pages)
@@ -132,12 +136,26 @@ Book.prototype.createHTMLBookCard = function() {
     let bookNav = document.createElement("div");
     bookNav.setAttribute("class", "book-nav");
     
-    let buttonTexts = ["Remove", "Favorite", "Read"];
-    buttonTexts.forEach(function(text) {   
+    let buttonNoFillIcons = ["images/delete-nofill.svg", "images/star-nofill.svg", "images/book-nofill.svg"];
+    let buttonFillIcons = ["images/delete-fill.svg", "images/star-fill.svg", "images/book-fill.svg"];
+
+    for (let i = 0; i < buttonNoFillIcons.length; i++)
+    {
         let button = document.createElement("button");
-        button.textContent = text;
+        let buttonImg = document.createElement("img");
+        buttonImg.setAttribute("src", buttonNoFillIcons.at(i));
+        button.appendChild(buttonImg);
+
+        button.addEventListener('mousedown', () => {
+            buttonImg.setAttribute("src", buttonFillIcons.at(i));
+        })
+
+        button.addEventListener('mouseup', () => {
+            buttonImg.setAttribute("src", buttonNoFillIcons.at(i));
+        })
+
         bookNav.appendChild(button);
-    })
+    }
     bookCard.appendChild(bookNav);
 
     return bookCard;

@@ -75,14 +75,14 @@ div.book-gallery {
 
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 30px;
 
     align-items: center;
     justify-items: center;
 }
 
 div.book-card {
-    width: min(90%, 600px);
+    width: min(100%, 600px);
     height: 300px;
 
     display: grid;
@@ -150,4 +150,15 @@ div.book-nav {
     justify-content: end;
 }
 
-/* left off on styling book card gallery grid on column and row sizes 10:10pm 5/24/24 */
+div.book-nav>button {
+    background-color: var(--book-card-color);
+    width: 4em;
+    height: 2em;
+    margin: 5px;
+
+    box-shadow: -2px 2px 2px #7a6240;
+    border-style: outset;
+    border-width: 2px;
+    border-color: white rgb(255, 255, 255) var(--main-content-color) var(--main-content-color);
+    border-radius: 50px;
+}
