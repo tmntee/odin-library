@@ -28,7 +28,8 @@
     padding: 0;
 
     --header-color: #172346;
-    --main-content-color: #634d2e;
+    --main-content-color: #947851;
+    --main-content-border-color: #946f3b;
     --book-card-color: #f1e3b7;
     --book-card-border-color: #e9cf83;
 }
@@ -56,6 +57,8 @@ div.header {
 
 div.main-content {
     background-color: var(--main-content-color);
+    box-shadow: -2px -5px 20px rgb(77, 77, 77);
+    border: var(--main-content-border-color) 5px solid;
 }
 
 div.welcomers {
@@ -68,11 +71,14 @@ div.welcomers {
 
 div.book-gallery {
     padding: 3em;
-    height: 100%;
-
     display: grid;
-    grid-template-rows: repeat(autofit, 600px);
 
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    align-items: center;
+    justify-items: center;
 }
 
 div.book-card {
