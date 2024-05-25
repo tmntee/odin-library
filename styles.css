@@ -35,7 +35,7 @@
 
 body {
     display: grid;
-    grid-template-rows: 1fr 6fr;
+    grid-template-rows: 0.5fr 6fr;
     height: 100vh;
     font-family: 'gandhi_sansregular', Arial, Helvetica, sans-serif;
 }
@@ -63,7 +63,7 @@ div.welcomers {
     flex-direction: row;
     justify-content: space-between;
 
-    padding: 2em;
+    padding: 1em 2em;
 }
 
 div.book-gallery {
@@ -71,11 +71,12 @@ div.book-gallery {
     height: 100%;
 
     display: grid;
-    grid-template-columns: repeat(autofill, 600px);
+    grid-template-rows: repeat(autofit, 600px);
+
 }
 
 div.book-card {
-    width: min(60%, 600px);
+    width: min(90%, 600px);
     height: 300px;
 
     display: grid;
@@ -86,6 +87,7 @@ div.book-card {
     border: var(--book-card-border-color) 3px solid;
     background-color: var(--book-card-color);
     padding: 1.5em;
+    box-shadow: 10px 10px 10px rgba(36, 26, 7, 0.377);
 ;}
 
 img.book-cover {
@@ -141,3 +143,5 @@ div.book-nav {
     display: flex;
     justify-content: end;
 }
+
+/* left off on styling book card gallery grid on column and row sizes 10:10pm 5/24/24 */

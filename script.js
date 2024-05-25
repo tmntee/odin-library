@@ -159,7 +159,18 @@ function displayLibraryToBookGallery() {
 }
 
 let catInTheHat = new Book("Cat in the Hat", "Dr. Seuss", 61, 0, false, false, null);
-let scottPilgrim = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
 addBookToLibrary(catInTheHat);
+
+let scottPilgrim = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
 addBookToLibrary(scottPilgrim);
+
+let scottPilgrim2 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+addBookToLibrary(scottPilgrim);
+let scottPilgrim3 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+addBookToLibrary(scottPilgrim);
+let scottPilgrim4 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+addBookToLibrary(scottPilgrim);
+let scottPilgrim5 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+addBookToLibrary(scottPilgrim);
+
 displayLibraryToBookGallery();
