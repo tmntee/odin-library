@@ -245,19 +245,17 @@ function displayLibraryToBookGallery() {
     })
 }
 
-let catInTheHat = new Book("Cat in the Hat", "Dr. Seuss", 61, 0, false, false, null);
-addBookToLibrary(catInTheHat);
-
-let scottPilgrim = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+let scottPilgrim = new Book("Scott Pilgrim's Precious Little Life, Vol. 1", "Bryan Lee O'Malley", 168, 0, true, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
 addBookToLibrary(scottPilgrim);
-
-let scottPilgrim2 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, false, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+let scottPilgrim2 = new Book("Scott Pilgrim vs. the World, Vol. 2", "Bryan Lee O'Malley", 200, 0, false, false, "https://m.media-amazon.com/images/I/81kv99NSTgL._SY466_.jpg");
 addBookToLibrary(scottPilgrim2);
-let scottPilgrim3 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+let scottPilgrim3 = new Book("Scott Pilgrim and the Infinite Sadness, Vol. 3", "Bryan Lee O'Malley", 192, 0, true, true, "https://m.media-amazon.com/images/I/71gQgfM5viL._SY466_.jpg");
 addBookToLibrary(scottPilgrim3);
-let scottPilgrim4 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, true, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+let scottPilgrim4 = new Book("Scott Pilgrim Gets It Together, Vol. 4", "Bryan Lee O'Malley", 216, 0, true, false, "https://m.media-amazon.com/images/I/516WYhxXHFL._SY445_SX342_.jpg");
 addBookToLibrary(scottPilgrim4);
-let scottPilgrim5 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+let scottPilgrim5 = new Book("Scott Pilgrim vs. The Universe, Vol. 5", "Bryan Lee O'Malley", 184, 0, false, true, "https://m.media-amazon.com/images/I/71QKmyN2YFL._SY466_.jpg");
 addBookToLibrary(scottPilgrim5);
+let scottPilgrim6 = new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg");
+addBookToLibrary(scottPilgrim6);
 
 displayLibraryToBookGallery();
