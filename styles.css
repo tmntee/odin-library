@@ -26,6 +26,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'gandhi_sansregular', Arial, Helvetica, sans-serif;
 
     --header-color: #172346;
     --main-content-color: #947851;
@@ -38,7 +39,6 @@ body {
     display: grid;
     grid-template-rows: 0.5fr 6fr;
     height: 100vh;
-    font-family: 'gandhi_sansregular', Arial, Helvetica, sans-serif;
 }
 
 p {
@@ -98,8 +98,7 @@ div.book-card {
 
 img.book-cover {
     grid-row: 1 / 4;
-    width: 90%;
-    height: 90%;
+    width: max(50px, 90%);
     border-radius: 10px;
     border: var(--book-card-border-color) 2px solid;
 }
@@ -156,4 +155,18 @@ div.book-nav {
 div.book-nav>button {
     width: 3em;
     border-radius: 50px;
+}
+
+button.add-book-button {
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    width: min(200px,20%);
+    height: min(75px, 20%);
+    border-radius: 50px;
+    border-width: 5px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
