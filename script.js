@@ -72,6 +72,8 @@ Book.prototype.createHTMLBookCard = function() {
     bookAuthor.textContent = this.author;
     bookInfo.appendChild(bookAuthor);
 
+    bookCard.appendChild(bookInfo);
+
     let pagesSection = document.createElement("div");
     pagesSection.setAttribute("class", "pages-section");
 
@@ -130,8 +132,7 @@ Book.prototype.createHTMLBookCard = function() {
 
     pagesSection.appendChild(pagesDisplay2);
 
-    bookInfo.append(pagesSection);
-    bookCard.appendChild(bookInfo);
+    bookCard.appendChild(pagesSection);
 
     // delete button functionality
     let bookNav = document.createElement("div");
