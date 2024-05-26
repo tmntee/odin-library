@@ -258,18 +258,4 @@ addBookToLibrary(scottPilgrim5);
 let scottPilgrim6 = new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg");
 addBookToLibrary(scottPilgrim6);
 
-// just testing something
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
-
 displayLibraryToBookGallery();
