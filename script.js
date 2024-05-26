@@ -32,7 +32,7 @@ time.toLocaleDateString
 let year = time.getUTCFullYear();
 document.getElementById("date").textContent = `${month} ${day}, ${year}`;
 
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, amntOfPages, pagesRead, haveRead, favorite, coverSrcLink) {
     this.title = title;
@@ -133,31 +133,98 @@ Book.prototype.createHTMLBookCard = function() {
     bookInfo.append(pagesSection);
     bookCard.appendChild(bookInfo);
 
+    // delete button functionality
     let bookNav = document.createElement("div");
     bookNav.setAttribute("class", "book-nav");
-    
-    let buttonNoFillIcons = ["images/delete-nofill.svg", "images/star-nofill.svg", "images/book-nofill.svg"];
-    let buttonFillIcons = ["images/delete-fill.svg", "images/star-fill.svg", "images/book-fill.svg"];
 
-    for (let i = 0; i < buttonNoFillIcons.length; i++)
-    {
-        let button = document.createElement("button");
-        let buttonImg = document.createElement("img");
-        buttonImg.setAttribute("src", buttonNoFillIcons.at(i));
-        button.appendChild(buttonImg);
+    let deleteButton = document.createElement("button");
+    deleteButton.addEventListener('click', () => {
+        console.log(myLibrary.indexOf(this));
+        myLibrary.splice(myLibrary.indexOf(this), 1);
+        console.log(myLibrary);
+        displayLibraryToBookGallery();
+    })
+    let deleteButtonIcon = document.createElement("img");
+    deleteButtonIcon.setAttribute("src", "images/delete-nofill.svg");
 
-        button.addEventListener('mousedown', () => {
-            buttonImg.setAttribute("src", buttonFillIcons.at(i));
-        })
+    deleteButton.appendChild(deleteButtonIcon);
 
-        button.addEventListener('mouseup', () => {
-            buttonImg.setAttribute("src", buttonNoFillIcons.at(i));
-        })
+    deleteButton.addEventListener('mousedown', () => {
+        deleteButtonIcon.setAttribute("src", "images/delete-fill.svg");
+    })
 
-        bookNav.appendChild(button);
+    deleteButton.addEventListener('mouseup', () => {
+        deleteButtonIcon.setAttribute("src", "images/delete-nofill.svg");
+    })
+
+    bookNav.appendChild(deleteButton);
+
+    // favorite button functionality
+    let favButton = document.createElement("button");
+    let favButtonIcon = document.createElement("img");
+
+    let defaultBttnClr = favButton.style.backgroundColor;
+    let favoritedBgClr = "#f5d469";
+
+    if (this.favorited == true) {
+        favButtonIcon.setAttribute("src", "images/star-fill.svg"); 
+        favButton.style.backgroundColor = favoritedBgClr; 
+    } 
+    else {
+        favButtonIcon.setAttribute("src", "images/star-nofill.svg");
     }
-    bookCard.appendChild(bookNav);
+    
+    favButton.appendChild(favButtonIcon);
 
+    favButton.addEventListener('click', () => {
+        if (this.favorited === true){
+            this.favorited = false;
+            favButtonIcon.setAttribute("src", "images/star-nofill.svg");
+            favButton.style.backgroundColor = defaultBttnClr;
+        }
+        else{
+            this.favorited = true;
+            favButtonIcon.setAttribute("src", "images/star-fill.svg");
+            favButton.style.backgroundColor = favoritedBgClr;
+        }
+    })
+
+    bookNav.appendChild(favButton);
+    
+    // read button functionality
+    let readButton = document.createElement("button");
+    let readButtonIcon = document.createElement("img");
+    let haveReadBgClr = "#79f569";
+
+    if (this.haveRead == true) {
+        readButtonIcon.setAttribute("src", "images/book-fill.svg"); 
+        readButton.style.backgroundColor = haveReadBgClr; 
+        this.pagesRead = this.pages;
+        bookPagesRead.textContent = this.pagesRead;
+    } 
+    else {
+        readButtonIcon.setAttribute("src", "images/book-nofill.svg");
+    }
+    
+    readButton.appendChild(readButtonIcon);
+
+    readButton.addEventListener('click', () => {
+        if (this.haveRead === true) {
+            this.haveRead = false;
+            readButtonIcon.setAttribute("src", "images/book-nofill.svg");
+            readButton.style.backgroundColor = defaultBttnClr;
+        }
+        else {
+            this.haveRead = true;
+            readButtonIcon.setAttribute("src", "images/book-fill.svg");
+            readButton.style.backgroundColor = haveReadBgClr;
+            this.pagesRead = this.pages;
+            bookPagesRead.textContent = this.pagesRead;
+        }
+    })
+
+    bookNav.appendChild(readButton);
+    bookCard.appendChild(bookNav);
     return bookCard;
 }
 
@@ -168,12 +235,13 @@ function addBookToLibrary(book) {
 const bookGallery = document.querySelector(".book-gallery");
 
 function displayLibraryToBookGallery() {
-    for (let i = 0; i < myLibrary.length; i++)
-    {   
-        let bookCard = myLibrary.at(i).createHTMLBookCard();
-
-        bookGallery.appendChild(bookCard);
+    while(bookGallery.firstChild) {
+        bookGallery.removeChild(bookGallery.firstChild);
     }
+
+    myLibrary.forEach((book) => {
+        bookGallery.appendChild(book.createHTMLBookCard());
+    })
 }
 
 let catInTheHat = new Book("Cat in the Hat", "Dr. Seuss", 61, 0, false, false, null);
@@ -182,11 +250,11 @@ addBookToLibrary(catInTheHat);
 let scottPilgrim = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
 addBookToLibrary(scottPilgrim);
 
-let scottPilgrim2 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+let scottPilgrim2 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, false, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
 addBookToLibrary(scottPilgrim2);
 let scottPilgrim3 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
 addBookToLibrary(scottPilgrim3);
-let scottPilgrim4 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
+let scottPilgrim4 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, true, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
 addBookToLibrary(scottPilgrim4);
 let scottPilgrim5 = new Book("Scott Pilgrim's Precious Little Life", "Bryan Lee O'Malley", 168, 0, false, true, "https://m.media-amazon.com/images/I/71iPLgUFlmL._SY342_.jpg");
 addBookToLibrary(scottPilgrim5);
