@@ -33,6 +33,7 @@
     --main-content-border-color: #946f3b;
     --book-card-color: #f1e3b7;
     --book-card-border-color: #e9cf83;
+    --focus-border-color: rgb(90, 143, 173);
 }
 
 body {
@@ -205,6 +206,13 @@ dialog>form input[type=number] {
     padding: 5px;
     border: 2px var(--book-card-border-color) solid;
     border-radius: 5px;
+    appearance: none;
+}
+
+dialog>form input[type=text]:focus,
+dialog>form input[type=number]:focus {
+    border-color: #FFFFFF;
+    box-shadow: gray 2px 2px 5px;
 }
 
 form>div.book-cover-section {
@@ -265,6 +273,16 @@ form>input[type=submit] {
     border: 3px #d4b453 solid;
     border-radius: 5px;
     box-shadow: 2px 2px 5px gray;
+}
+
+form>input[type=submit]:hover {
+    background-color: rgb(255, 244, 213);
+    border-color: #f0d995;
+}
+
+form>input[type=submit]:active {
+    background-color: rgb(172, 137, 41);
+    border-color: #9b7d24;
 }
 
 button#close-button {

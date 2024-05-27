@@ -287,6 +287,12 @@ let bookPagesRead = document.querySelector("input[name=book-pages-read]");
 let haveReadToggle = document.querySelector("input[name=have-read]");
 let favoriteToggle = document.querySelector("input[name=favorite]");
 let submitBookButton = document.querySelector("#submit-book-button");
+
+coverUrl.addEventListener('change', () => {
+    let coverDisplay = document.querySelector("img.new-book-cover");
+    coverDisplay.setAttribute("src", coverUrl.value);
+})
+
 submitBookButton.addEventListener('click', (e) => {
     e.preventDefault();
     if (bookForm.checkValidity())
