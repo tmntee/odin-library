@@ -57,28 +57,28 @@
                     <button id="close-button">close</button>
                     <div class="book-info-inputs">
                         <label for="book-title">title:</label>
-                        <input type="text" name="book-title" autofocus>
+                        <input type="text" name="book-title" autofocus required>
 
                         <label for="book-author">author:</label>
-                        <input type="text" name="book-author">
+                        <input type="text" name="book-author" required>
 
                         <label for="book-pages">pages:</label>
-                        <input type="text" name="book-pages">
+                        <input type="number" name="book-pages" required>
 
                         <label for="book-pages-read">pages read:</label>
-                        <input type="text" name="book-pages-read" placeholder="optional">
+                        <input type="number" name="book-pages-read" placeholder="optional">
                     </div>
                     <div class="book-toggles">
                         <div class="toggle">
                             <label for="favorite"><img src="images/star-nofill.svg" alt="Favorite Icon">favorite?</label>
-                            <input type="checkbox" name="favorite">
+                            <input type="checkbox" name="favorite" value="true">
                         </div>
                         <div class="toggle">
                             <label for="have-read"><img src="images/book-nofill.svg" alt="Read Icon">read?</label>
-                            <input type="checkbox" name="have-read">
+                            <input type="checkbox" name="have-read" value="true">
                         </div>
                     </div>
-                    <input type="submit">
+                    <input type="submit" id="submit-book-button">
                 </form>
             </dialog>
         </div>

@@ -41,7 +41,13 @@ function Book(title, author, amntOfPages, pagesRead, haveRead, favorite, coverSr
     this.pagesRead = pagesRead;
     this.haveRead = haveRead;
     this.favorited = favorite;
-    this.coverLink = coverSrcLink;
+
+    if (coverSrcLink === "" || coverSrcLink === undefined) {
+        this.coverLink = "images/book_icon.svg";
+    } else {
+        this.coverLink = coverSrcLink;
+    }
+
 }
 
 Book.prototype.createHTMLBookCard = function() {
@@ -50,12 +56,7 @@ Book.prototype.createHTMLBookCard = function() {
 
     let bookCover = document.createElement("img");
     bookCover.setAttribute("class", "book-cover");
-    if (this.coverLink != null) {
-        bookCover.setAttribute("src", this.coverLink);
-    }
-    else {
-        bookCover.setAttribute("src", "images/book_icon.svg");
-    }
+    bookCover.setAttribute("src", this.coverLink);
 
     bookCard.appendChild(bookCover);
 
@@ -265,3 +266,43 @@ let addBookButton = document.querySelector("#add-book-button");
 addBookButton.addEventListener('click', () => {
     addBookFormDialog.showModal();
 })
+
+let closeBookDialog = document.querySelector("#close-button");
+closeBookDialog.addEventListener('click', (e) => {
+    e.preventDefault();
+    addBookFormDialog.close();
+})
+
+let bookForm = document.querySelector("dialog#add-book-dialog form");
+
+function resetForm() {
+    bookForm.reset();
+}
+
+let coverUrl = document.querySelector("input[name=cover-url]");
+let bookTitle = document.querySelector("input[name=book-title]");
+let bookAuthor = document.querySelector("input[name=book-author]");
+let bookPages = document.querySelector("input[name=book-pages]");
+let bookPagesRead = document.querySelector("input[name=book-pages-read]");
+let haveReadToggle = document.querySelector("input[name=have-read]");
+let favoriteToggle = document.querySelector("input[name=favorite]");
+let submitBookButton = document.querySelector("#submit-book-button");
+submitBookButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (bookForm.checkValidity())
+    {   
+        if( bookPagesRead.value === "")
+        {
+            bookPagesRead.value = 0;
+        }
+        let book = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookPagesRead.value, haveReadToggle.checked, favoriteToggle.checked, coverUrl.value);
+        addBookToLibrary(book);
+        displayLibraryToBookGallery();
+        addBookFormDialog.close();
+        resetForm();
+    }
+    else{
+        bookForm.reportValidity();
+    }
+})
+

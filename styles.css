@@ -99,6 +99,7 @@ div.book-card {
 img.book-cover {
     grid-row: 1 / 4;
     width: max(50px, 90%);
+    height: max(25px, 90%);
     border-radius: 10px;
     border: var(--book-card-border-color) 2px solid;
 }
@@ -199,7 +200,8 @@ dialog>form {
     padding: 1em;
 }
 
-dialog>form input[type=text] {
+dialog>form input[type=text],
+dialog>form input[type=number] {
     padding: 5px;
     border: 2px var(--book-card-border-color) solid;
     border-radius: 5px;
