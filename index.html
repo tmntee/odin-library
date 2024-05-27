@@ -50,10 +50,11 @@
             <dialog id="add-book-dialog">
                 <form action="post">
                     <div class="book-cover-section">
-                        <img src="" alt="Book Cover">
+                        <img src="images/book_icon.svg" alt="Book Cover">
                         <label for="cover-url">cover url:</label>
                         <input type="text" placeholder="optional" name="cover-url">
                     </div>
+                    <button id="close-button">close</button>
                     <div class="book-info-inputs">
                         <label for="book-title">title:</label>
                         <input type="text" name="book-title" autofocus>
@@ -68,11 +69,14 @@
                         <input type="text" name="book-pages-read" placeholder="optional">
                     </div>
                     <div class="book-toggles">
-                        <label for="have-read">read?</label>
-                        <input type="checkbox" name="have-read">
-
-                        <label for="favorite">favorite?</label>
-                        <input type="checkbox" name="favorite">
+                        <div class="toggle">
+                            <label for="favorite"><img src="images/star-nofill.svg" alt="Favorite Icon">favorite?</label>
+                            <input type="checkbox" name="favorite">
+                        </div>
+                        <div class="toggle">
+                            <label for="have-read"><img src="images/book-nofill.svg" alt="Read Icon">read?</label>
+                            <input type="checkbox" name="have-read">
+                        </div>
                     </div>
                     <input type="submit">
                 </form>
