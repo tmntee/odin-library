@@ -59,7 +59,6 @@ div.header {
 div.main-content {
     background-color: var(--main-content-color);
     box-shadow: -2px -5px 20px rgb(77, 77, 77);
-    border: var(--main-content-border-color) 5px solid;
 }
 
 div.welcomers {
@@ -75,7 +74,7 @@ div.book-gallery {
     display: grid;
 
     grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, 550px);
     gap: 30px;
 
     align-items: center;
