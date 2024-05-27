@@ -259,3 +259,9 @@ let scottPilgrim6 = new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O
 addBookToLibrary(scottPilgrim6);
 
 displayLibraryToBookGallery();
+
+let addBookFormDialog = document.querySelector("#add-book-dialog");
+let addBookButton = document.querySelector("#add-book-button");
+addBookButton.addEventListener('click', () => {
+    addBookFormDialog.showModal();
+})

@@ -42,12 +42,41 @@
             </div>
             
         </div>
-        <button class="add-book-button">
+        <button id="add-book-button" class="add-book-button">
             <img src="images/add-icon.svg" alt="Add Book Plus Sign">
             <h1>Add book</h1>
         </button>
-        <div class="form-section">
-            
+        <div class="addBookSection">
+            <dialog id="add-book-dialog">
+                <form action="post">
+                    <div class="book-cover-section">
+                        <img src="" alt="Book Cover">
+                        <label for="cover-url">cover url:</label>
+                        <input type="text" placeholder="optional" name="cover-url">
+                    </div>
+                    <div class="book-info-inputs">
+                        <label for="book-title">title:</label>
+                        <input type="text" name="book-title" autofocus>
+
+                        <label for="book-author">author:</label>
+                        <input type="text" name="book-author">
+
+                        <label for="book-pages">pages:</label>
+                        <input type="text" name="book-pages">
+
+                        <label for="book-pages-read">pages read:</label>
+                        <input type="text" name="book-pages-read" placeholder="optional">
+                    </div>
+                    <div class="book-toggles">
+                        <label for="have-read">read?</label>
+                        <input type="checkbox" name="have-read">
+
+                        <label for="favorite">favorite?</label>
+                        <input type="checkbox" name="favorite">
+                    </div>
+                    <input type="submit">
+                </form>
+            </dialog>
         </div>
     </div>
     
