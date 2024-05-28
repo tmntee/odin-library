@@ -92,7 +92,7 @@ Book.prototype.createHTMLBookCard = function() {
 
     let bookPages = document.createElement("p");
     bookPages.setAttribute("class", "pages");
-    bookPages.textContent = this.pages;
+    bookPages.textContent = `${this.pages} pages`;
     pagesDisplay1.appendChild(bookPages);
 
     pagesSection.appendChild(pagesDisplay1);
