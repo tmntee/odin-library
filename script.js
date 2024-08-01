@@ -1,36 +1,43 @@
-let morningColor = "#9bbed1";
-let afternoonColor = "#639bc9";
-let eveningColor = "#b55c04"; 
-let nightColor = "#141c2e";
+class HeaderChanger {
+    currentDate;
+    currentHour;
+    currentMonth;
+    currentDay;
+    currentYear;
 
-let time = new Date();
-let currentHour = time.getHours();
-if (currentHour >= 5 && currentHour < 12)
-{
-    document.getElementById("header-sky").style.backgroundColor = morningColor;
-    document.getElementById("user-greeting").textContent += " morning";
-} 
-else if (currentHour >= 12 && currentHour < 17)
-{
-    document.getElementById("header-sky").style.backgroundColor = afternoonColor;
-    document.getElementById("user-greeting").textContent += " afternoon";
-} 
-else if (currentHour >= 17 && currentHour < 21)
-{
-    document.getElementById("header-sky").style.backgroundColor = eveningColor;
-    document.getElementById("user-greeting").textContent += " evening";
+    morningColor = "#9bbed1";
+    afternoonColor = "#639bc9";
+    eveningColor = "#b55c04"; 
+    nightColor = "#141c2e";
+
+    constructor(date) {
+        this.currentDate = date;
+        this.currentHour = this.currentDate.getHours();
+
+        if (this.currentHour >= 5 && this.currentHour < 12) {
+            this.changeColorAndText(this.morningColor, " morning");
+        } else if (this.currentHour >= 12 && this.currentHour < 17) {
+            this.changeColorAndText(this.afternoonColor, " afternoon");
+        } else if (this.currentHour >= 17 && this.currentHour < 21) {
+            this.changeColorAndText(this.eveningColor, " evening");
+        } else if (this.currentHour >= 21 || this.currentHour <= 4) {
+            this.changeColorAndText(this.nightColor, "night");
+        }
+
+        this.currentMonth = this.currentDate.toLocaleDateString('default', { month: 'long'});
+        this.currentDay = this.currentDate.getUTCDate();
+        this.currentYear = this.currentDate.getUTCFullYear();
+
+        document.getElementById("date").textContent = `${this.currentMonth} ${this.currentDay}, ${this.currentYear}`;
+    }
+
+    changeColorAndText = function(color, text) {
+        document.getElementById("header-sky").style.backgroundColor = color;
+        document.getElementById("user-greeting").textContent += text;
+    }
 }
-else if (currentHour >= 21 || currentHour <= 4)
-{
-    document.getElementById("header-sky").style.backgroundColor = nightColor;
-    document.getElementById("user-greeting").textContent += "night";
-}
-    
-let month = time.toLocaleDateString('default', { month: 'long'});
-let day = time.getUTCDate();
-time.toLocaleDateString
-let year = time.getUTCFullYear();
-document.getElementById("date").textContent = `${month} ${day}, ${year}`;
+
+let dynamicHeader = new HeaderChanger(new Date);
 
 let myLibrary = [];
 
