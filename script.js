@@ -41,42 +41,21 @@ let dynamicHeader = new HeaderChanger(new Date);
 
 class Library {
     #myLibrary = [];
+    libraryDisplay = document.querySelector(".book-gallery");
 
-    addBookToLibrary(book) {
-        this.#myLibrary.push(book);
+    clearDisplay() {
+        while(this.libraryDisplay.firstChild) {
+            this.libraryDisplay.removeChild(this.libraryDisplay.firstChild);
+        }
     }
 
-    getLibrary() {
-        return this.#myLibrary.slice(0);
-    }
-}
-
-class Book {
-    title;
-    author;
-    pages;
-    pagesRead;
-    haveRead;
-    favorite;
-    coverSrcLink;
-
-    constructor(title, author, amntOfPages, pagesRead, haveRead, favorite, coverSrcLink) {
-        this.title = title;
-        this.author = author;
-        this.pages = amntOfPages;
-        this.pagesRead = (pagesRead === undefined) ? 0 : pagesRead;
-        this.haveRead = (haveRead === undefined) ? false : haveRead;
-        this.favorite = (favorite === undefined) ? false : favorite;
-        this.coverSrcLink = (coverSrcLink === undefined) ? "images/book_icon.svg" : coverSrcLink;
-    }
-
-    createHTMLBookCard = () => {
+    createBookDisplayCard(book) {
         let bookCard = document.createElement("div");
         bookCard.setAttribute("class", "book-card");
 
         let bookCover = document.createElement("img");
         bookCover.setAttribute("class", "book-cover");
-        bookCover.setAttribute("src", this.coverSrcLink);
+        bookCover.setAttribute("src", book.coverSrcLink);
 
         bookCard.appendChild(bookCover);
 
@@ -85,12 +64,12 @@ class Book {
 
         let bookTitle = document.createElement("h1");
         bookTitle.setAttribute("class", "title");
-        bookTitle.textContent = this.title;
+        bookTitle.textContent = book.title;
         bookInfo.appendChild(bookTitle);
 
         let bookAuthor = document.createElement("p");
         bookAuthor.setAttribute("class", "author");
-        bookAuthor.textContent = this.author;
+        bookAuthor.textContent = book.author;
         bookInfo.appendChild(bookAuthor);
 
         bookCard.appendChild(bookInfo);
@@ -103,7 +82,7 @@ class Book {
 
         let bookPagesRead = document.createElement("p");
         bookPagesRead.setAttribute("class", "pages-read");
-        bookPagesRead.textContent = this.pagesRead;
+        bookPagesRead.textContent = book.pagesRead;
         pagesDisplay1.appendChild(bookPagesRead);
 
         let division = document.createElement("p");
@@ -112,7 +91,7 @@ class Book {
 
         let bookPages = document.createElement("p");
         bookPages.setAttribute("class", "pages");
-        bookPages.textContent = `${this.pages} pages`;
+        bookPages.textContent = `${book.pages} pages`;
         pagesDisplay1.appendChild(bookPages);
 
         pagesSection.appendChild(pagesDisplay1);
@@ -127,10 +106,10 @@ class Book {
         subPageButton.appendChild(subIcon);
 
         subPageButton.addEventListener('click', () => {
-            if (this.pagesRead != 0)
+            if (book.pagesRead != 0)
             {
-                this.pagesRead--;
-                bookPagesRead.textContent = this.pagesRead;
+                book.pagesRead--;
+                bookPagesRead.textContent = book.pagesRead;
             }
         })
 
@@ -141,10 +120,10 @@ class Book {
         addPageButton.appendChild(addIcon);
 
         addPageButton.addEventListener('click', () => {
-            if (this.pagesRead != this.pages)
+            if (book.pagesRead != book.pages)
             {
-                this.pagesRead++;
-                bookPagesRead.textContent = this.pagesRead;
+                book.pagesRead++;
+                bookPagesRead.textContent = book.pagesRead;
             }
         })
 
@@ -161,11 +140,11 @@ class Book {
 
         let deleteButton = document.createElement("button");
         deleteButton.addEventListener('click', () => {
-            console.log(myLibrary.indexOf(this));
-            myLibrary.splice(myLibrary.indexOf(this), 1);
-            console.log(myLibrary);
-            displayLibraryToBookGallery();
+            let bookIndex = this.#myLibrary.indexOf(book);
+            this.#myLibrary.splice(bookIndex, 1);
+            this.displayLibrary();
         })
+        
         let deleteButtonIcon = document.createElement("img");
         deleteButtonIcon.setAttribute("src", "images/delete-nofill.svg");
 
@@ -188,7 +167,7 @@ class Book {
         let defaultBttnClr = favButton.style.backgroundColor;
         let favoritedBgClr = "#f5d469";
 
-        if (this.favorited == true) {
+        if (book.favorited == true) {
             favButtonIcon.setAttribute("src", "images/star-fill.svg"); 
             favButton.style.backgroundColor = favoritedBgClr; 
         } 
@@ -199,13 +178,13 @@ class Book {
         favButton.appendChild(favButtonIcon);
 
         favButton.addEventListener('click', () => {
-            if (this.favorited === true){
-                this.favorited = false;
+            if (book.favorited === true){
+                book.favorited = false;
                 favButtonIcon.setAttribute("src", "images/star-nofill.svg");
                 favButton.style.backgroundColor = defaultBttnClr;
             }
             else{
-                this.favorited = true;
+                book.favorited = true;
                 favButtonIcon.setAttribute("src", "images/star-fill.svg");
                 favButton.style.backgroundColor = favoritedBgClr;
             }
@@ -218,11 +197,11 @@ class Book {
         let readButtonIcon = document.createElement("img");
         let haveReadBgClr = "#79f569";
 
-        if (this.haveRead == true) {
+        if (book.haveRead == true) {
             readButtonIcon.setAttribute("src", "images/book-fill.svg"); 
             readButton.style.backgroundColor = haveReadBgClr; 
-            this.pagesRead = this.pages;
-            bookPagesRead.textContent = this.pagesRead;
+            book.pagesRead = book.pages;
+            bookPagesRead.textContent = book.pagesRead;
         } 
         else {
             readButtonIcon.setAttribute("src", "images/book-nofill.svg");
@@ -231,17 +210,17 @@ class Book {
         readButton.appendChild(readButtonIcon);
 
         readButton.addEventListener('click', () => {
-            if (this.haveRead === true) {
-                this.haveRead = false;
+            if (book.haveRead === true) {
+                book.haveRead = false;
                 readButtonIcon.setAttribute("src", "images/book-nofill.svg");
                 readButton.style.backgroundColor = defaultBttnClr;
             }
             else {
-                this.haveRead = true;
+                book.haveRead = true;
                 readButtonIcon.setAttribute("src", "images/book-fill.svg");
                 readButton.style.backgroundColor = haveReadBgClr;
-                this.pagesRead = this.pages;
-                bookPagesRead.textContent = this.pagesRead;
+                book.pagesRead = book.pages;
+                bookPagesRead.textContent = book.pagesRead;
             }
         })
 
@@ -249,23 +228,45 @@ class Book {
         bookCard.appendChild(bookNav);
         return bookCard;
     }
-}
 
-class BookGallery {
-    gallery = document.querySelector(".book-gallery");
+    displayLibrary() {
+        this.clearDisplay();
 
-    clearGallery() {
-        while(this.gallery.firstChild) {
-            this.gallery.removeChild(this.gallery.firstChild);
-        }
+        this.#myLibrary.forEach((book) => {
+            this.libraryDisplay.appendChild(this.createBookDisplayCard(book));
+        })
     }
 
-    displayLibraryToBookGallery(library) {
-        this.clearGallery();
+    addBookToLibrary(book) {
+        this.#myLibrary.push(book);
+    }
 
-        library.getLibrary().forEach((book) => {
-            this.gallery.appendChild(book.createHTMLBookCard());
-        })
+    removeBookFromLibrary(book) {
+        console.log(this.#myLibrary.indexOf(book));
+        this.#myLibrary.splice(this.#myLibrary.indexOf(book), 1);
+        console.log(this.#myLibrary);
+        this.displayLibrary();
+    }
+
+}
+
+class Book {
+    title;
+    author;
+    pages;
+    pagesRead;
+    haveRead;
+    favorite;
+    coverSrcLink;
+
+    constructor(title, author, amntOfPages, pagesRead, haveRead, favorite, coverSrcLink) {
+        this.title = title;
+        this.author = author;
+        this.pages = amntOfPages;
+        this.pagesRead = (pagesRead === undefined) ? 0 : pagesRead;
+        this.haveRead = (haveRead === undefined) ? false : haveRead;
+        this.favorite = (favorite === undefined) ? false : favorite;
+        this.coverSrcLink = (coverSrcLink === undefined) ? "images/book_icon.svg" : coverSrcLink;
     }
 }
 
@@ -278,9 +279,8 @@ lib.addBookToLibrary(new Book("Scott Pilgrim Gets It Together, Vol. 4", "Bryan L
 lib.addBookToLibrary(new Book("Scott Pilgrim vs. The Universe, Vol. 5", "Bryan Lee O'Malley", 184, 0, false, true, "https://m.media-amazon.com/images/I/71QKmyN2YFL._SY466_.jpg"));
 lib.addBookToLibrary(new Book("Scott Pilgrim's Finest Hour, Vol. 6", "Bryan Lee O'Malley", 248, 0, false, false, "https://m.media-amazon.com/images/I/71dt1Uw4gaL._SY466_.jpg"));
 
-let bookGallery = new BookGallery();
+lib.displayLibrary();
 
-bookGallery.displayLibraryToBookGallery(lib);
 
 class AddBookForm {
     formDialog = document.querySelector("#add-book-dialog");
@@ -301,9 +301,7 @@ class AddBookForm {
         bookForm.reset();
     }
 
-    formSetup(library, gallery) {
-        let libArray = library.getLibrary();
-
+    formSetup(library) {
         this.addBookButton.addEventListener('click', () => {
             this.formDialog.showModal();
         })
@@ -327,8 +325,8 @@ class AddBookForm {
                     this.bookPagesRead.value = 0;
                 }
                 let book = new Book(this.bookTitle.value, this.bookAuthor.value, this.bookPages.value, this.bookPagesRead.value, this.haveReadToggle.checked, this.favoriteToggle.checked, this.coverUrl.value);
-                lib.addBookToLibrary(book);
-                gallery.displayLibraryToBookGallery(lib);
+                library.addBookToLibrary(book);
+                library.displayLibrary();
                 this.formDialog.close();
                 this.resetForm();
             }
@@ -338,13 +336,13 @@ class AddBookForm {
         })
     }
 
-    constructor(library, gallery) {
-        this.formSetup(library, gallery);
+    constructor(library) {
+        this.formSetup(library);
     }
     
 }
 
-new AddBookForm(lib, bookGallery);
+new AddBookForm(lib);
 
 
 
