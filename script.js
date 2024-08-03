@@ -282,54 +282,73 @@ let bookGallery = new BookGallery();
 
 bookGallery.displayLibraryToBookGallery(lib);
 
-let addBookFormDialog = document.querySelector("#add-book-dialog");
-let addBookButton = document.querySelector("#add-book-button");
-addBookButton.addEventListener('click', () => {
-    addBookFormDialog.showModal();
-})
+class AddBookForm {
+    formDialog = document.querySelector("#add-book-dialog");
+    addBookButton = document.querySelector("#add-book-button");
+    closeBookDialog = document.querySelector("#close-button");
+    bookForm = document.querySelector("dialog#add-book-dialog form");
 
-let closeBookDialog = document.querySelector("#close-button");
-closeBookDialog.addEventListener('click', (e) => {
-    e.preventDefault();
-    addBookFormDialog.close();
-})
+    coverUrl = document.querySelector("input[name=cover-url]");
+    bookTitle = document.querySelector("input[name=book-title]");
+    bookAuthor = document.querySelector("input[name=book-author]");
+    bookPages = document.querySelector("input[name=book-pages]");
+    bookPagesRead = document.querySelector("input[name=book-pages-read]");
+    haveReadToggle = document.querySelector("input[name=have-read]");
+    favoriteToggle = document.querySelector("input[name=favorite]");
+    submitBookButton = document.querySelector("#submit-book-button");
+    
+    resetForm() {
+        bookForm.reset();
+    }
 
-let bookForm = document.querySelector("dialog#add-book-dialog form");
+    formSetup(library, gallery) {
+        let libArray = library.getLibrary();
 
-function resetForm() {
-    bookForm.reset();
+        this.addBookButton.addEventListener('click', () => {
+            this.formDialog.showModal();
+        })
+
+        this.closeBookDialog.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.formDialog.close();
+        })
+
+        this.coverUrl.addEventListener('change', () => {
+            let coverDisplay = document.querySelector("img.new-book-cover");
+            coverDisplay.setAttribute("src", this.coverUrl.value);
+        })
+
+        this.submitBookButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (this.bookForm.checkValidity())
+            {   
+                if( this.bookPagesRead.value === "")
+                {
+                    this.bookPagesRead.value = 0;
+                }
+                let book = new Book(this.bookTitle.value, this.bookAuthor.value, this.bookPages.value, this.bookPagesRead.value, this.haveReadToggle.checked, this.favoriteToggle.checked, this.coverUrl.value);
+                lib.addBookToLibrary(book);
+                gallery.displayLibraryToBookGallery(lib);
+                this.formDialog.close();
+                this.resetForm();
+            }
+            else{
+                this.bookForm.reportValidity();
+            }
+        })
+    }
+
+    constructor(library, gallery) {
+        this.formSetup(library, gallery);
+    }
+    
 }
 
-let coverUrl = document.querySelector("input[name=cover-url]");
-let bookTitle = document.querySelector("input[name=book-title]");
-let bookAuthor = document.querySelector("input[name=book-author]");
-let bookPages = document.querySelector("input[name=book-pages]");
-let bookPagesRead = document.querySelector("input[name=book-pages-read]");
-let haveReadToggle = document.querySelector("input[name=have-read]");
-let favoriteToggle = document.querySelector("input[name=favorite]");
-let submitBookButton = document.querySelector("#submit-book-button");
+new AddBookForm(lib, bookGallery);
 
-coverUrl.addEventListener('change', () => {
-    let coverDisplay = document.querySelector("img.new-book-cover");
-    coverDisplay.setAttribute("src", coverUrl.value);
-})
 
-submitBookButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (bookForm.checkValidity())
-    {   
-        if( bookPagesRead.value === "")
-        {
-            bookPagesRead.value = 0;
-        }
-        let book = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookPagesRead.value, haveReadToggle.checked, favoriteToggle.checked, coverUrl.value);
-        addBookToLibrary(book);
-        displayLibraryToBookGallery();
-        addBookFormDialog.close();
-        resetForm();
-    }
-    else{
-        bookForm.reportValidity();
-    }
-})
+
+
+
+
 
