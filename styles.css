@@ -162,7 +162,7 @@ div.book-nav>button {
 button.add-book-button {
     position: fixed;
     bottom: 3em;
-    right: 3em;
+    left: 3em;
     width: min(200px,20%);
     height: min(75px, 20%);
     border-radius: 50px;
@@ -175,13 +175,7 @@ button.add-book-button {
 
 dialog#add-book-dialog {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -22.5vh;
-    margin-top: -24vh;
-
-    width: 45vh;
-    height: 48vh;
+    left: 3em;
 
     background-color: var(--book-card-color);
     border: 2px var(--book-card-border-color) solid;
