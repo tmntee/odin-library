@@ -288,3 +288,9 @@ button#close-button {
 ::backdrop {
     background-color: rgba(0, 0, 0, 0.288);
 }
+
+input:invalid {
+    border: red;
+    background-color: rgb(231, 166, 166);
+    color: red;
+}

@@ -316,6 +316,34 @@ class AddBookForm {
             coverDisplay.setAttribute("src", this.coverUrl.value);
         })
 
+        this.bookTitle.addEventListener('input', () => {
+            if (this.bookTitle.value === '') {
+                this.bookTitle.setCustomValidity('Please enter a book title.');
+            } else {
+                this.bookTitle.setCustomValidity('');
+            }
+        })
+
+        this.bookAuthor.addEventListener('input', () => {
+            if (this.bookAuthor.value === '') {
+                this.bookAuthor.setCustomValidity('Please enter an author name.');
+            } else {
+                this.bookAuthor.setCustomValidity('');
+            }
+        })
+        
+        this.bookPages.addEventListener('input', () => {
+            if (this.bookPages.checkValidity() === false) {
+                if (this.bookPages.rangeUnderflow) {
+                    this.bookPages.setCustomValidity('Amount of pages must be more than 5.');
+                } else {
+                    this.bookPages.setCustomValidity('Please enter the amount of pages.');
+                }
+            } else {
+                this.bookPages.setCustomValidity('');
+            }
+        })
+
         this.submitBookButton.addEventListener('click', (e) => {
             e.preventDefault();
             if (this.bookForm.checkValidity())
